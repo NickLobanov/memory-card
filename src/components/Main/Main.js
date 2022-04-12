@@ -1,14 +1,29 @@
 import React from "react";
 import Card from "../Card/Card";
-import './Main.css'
+import styled from "styled-components";
+
 
 const Main = () => {
+
+    const MainContainer = styled.div`
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 15px;
+    `
+
     return (
-        <div className="main">
+        <MainContainer>
             <Card />
             <Card />
             <Card />
-        </div>
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+            <Card />
+        </MainContainer>
     )
 }
 
