@@ -1,15 +1,47 @@
 import React from "react";
-import './Card.css'
+import styled from "styled-components";
 
-const Card = () => {
+const Card = ({item}) => {
 
+    const CardWrap = styled.div`
+        width: 200px;
+        height: 200px;
+        position: relative;
+        border: 1px solid black;
+    `
+    const Card = styled.div`
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        overflow: hidden;
+        transition: transform 0.6s linear;
+    `
+    const CardForward = styled(Card)`
+        background-color: blue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: perspective(1000px) rotateY(0deg);
+
+        ${CardWrap}:hover & {
+            transform: perspective(1000px) rotateY(180deg);
+        }
+    `
+    const CardBack = styled(Card)`
+        object-fit: fill;
+        transform: perspective(1000px) rotateY(-180deg);
+
+        ${CardWrap}:hover & {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+    `
+    
     return (
-        <div className="card">
-            <div className="card__back"></div>
-            <div className="card__forward">
-                
-            </div>
-        </div>
+        <CardWrap>
+            <CardForward />
+            <CardBack as='img' src={item.src}/>
+        </CardWrap>
     )
 }
 

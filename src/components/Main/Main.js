@@ -1,9 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Card from "../Card/Card";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 
 const Main = () => {
+
+    const {cardList} = useSelector(state => ({
+        cardList: state.cardReducer.cardList
+    }))
+
+    console.log(cardList)
 
     const MainContainer = styled.div`
         display: grid;
@@ -14,15 +21,9 @@ const Main = () => {
 
     return (
         <MainContainer>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {cardList.map(item => (
+                <Card item={item} key={item.id}/>
+            ))}
         </MainContainer>
     )
 }

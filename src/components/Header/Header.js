@@ -37,7 +37,7 @@ const Header = () => {
                     <span>username</span>
                     <span>Score: 0000</span>
                 </Nav>
-                <LogoLink to='main'>
+                <LogoLink to=''>
                     Memory Card
                 </LogoLink>
                 <NavRight>
