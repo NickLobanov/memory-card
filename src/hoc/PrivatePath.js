@@ -1,10 +1,13 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const PrivatePath = () => {
 
-    const auth = true
+    const {userName} = useSelector(state => ({
+        userName: state.userReducer.userName
+    }))
 
-    if(!auth) {
+    if(!userName || !localStorage.getItem('userName')) {
         return <Navigate to='/memory-card/login' />  
     }
 

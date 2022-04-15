@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, Navigate} from 'react-router-dom'
 import Header from '../Header/Header';
 import Auth from '../Auth/Auth';
 import Main from '../Main/Main';
@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getCards())
-  }, [dispatch])
+  }, [])
 
   return (
       <Routes>
@@ -27,6 +27,7 @@ function App() {
           </Route>
           <Route path='login' element={<Auth />}/>
         </Route>
+        <Route path='*' element={<Navigate to={'/memory-card'} />}/>
       </Routes>
     
   );

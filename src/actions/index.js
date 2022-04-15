@@ -1,6 +1,8 @@
 import axios from "axios"
 
 export const GET_CARDS = 'GET_CARDS'
+export const CREATE_USER = 'CREATE_USER'
+export const PATCH_USER = 'PATCH_USER'
 
 export function getCards() {
     return function(dispatch) {
@@ -11,5 +13,19 @@ export function getCards() {
                     cards: res.data
                 })
             })
+    }
+}
+
+export function createUser(userName) {
+    return {
+        type: CREATE_USER,
+        name: userName
+    }
+}
+
+export function putchUser(newUser) {
+    return {
+        type: PATCH_USER,
+        newName: newUser
     }
 }
