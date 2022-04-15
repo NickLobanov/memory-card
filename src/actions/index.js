@@ -3,6 +3,7 @@ import axios from "axios"
 export const GET_CARDS = 'GET_CARDS'
 export const CREATE_USER = 'CREATE_USER'
 export const PATCH_USER = 'PATCH_USER'
+export const DELETE_USER = 'DELETE_USER'
 
 export function getCards() {
     return function(dispatch) {
@@ -27,5 +28,10 @@ export function putchUser(newUser) {
     return {
         type: PATCH_USER,
         newName: newUser
+    }
+}
+export function deleteUser() {
+    return {
+        type: DELETE_USER
     }
 }

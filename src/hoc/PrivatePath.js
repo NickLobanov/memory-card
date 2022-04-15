@@ -6,8 +6,9 @@ const PrivatePath = () => {
     const {userName} = useSelector(state => ({
         userName: state.userReducer.userName
     }))
+    console.log(localStorage.getItem('userName'))
 
-    if(!userName || !localStorage.getItem('userName')) {
+    if(!userName && localStorage.getItem('userName') == null) {
         return <Navigate to='/memory-card/login' />  
     }
 

@@ -1,4 +1,4 @@
-import { CREATE_USER, PATCH_USER } from "../actions";
+import { CREATE_USER, PATCH_USER, DELETE_USER } from "../actions";
 
 const initialState = {
     userName: ''
@@ -11,6 +11,9 @@ export const userReducer = (state = initialState, action) => {
         }
         case PATCH_USER: {
             return {...state, userName: action.newName}
+        }
+        case DELETE_USER: {
+            return {...state, userName: ''}
         }
         default: {
             return state
