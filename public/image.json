@@ -2,41 +2,97 @@
     {
         "id": "1",
         "name": "first-image",
-        "src": "/images/first-image.jpg"
+        "src": "/images/first-image.jpg",
+        "selected": false
     },
     {
         "id": "2",
         "name": "second-image",
-        "src": "/images/second-image.jpg"
+        "src": "/images/second-image.jpg",
+        "selected": false
     },
     {
         "id": "3",
         "name": "third-image",
-        "src": "/images/third-image.jpg"
+        "src": "/images/third-image.jpg",
+        "selected": false
     },
     {
         "id": "4",
         "name": "fourth-image",
-        "src": "/images/fourth-image.jpg"
+        "src": "/images/fourth-image.jpg",
+        "selected": false
     },
     {
         "id": "5",
         "name": "fifth-image",
-        "src": "/images/fifth-image.jpg"
+        "src": "/images/fifth-image.jpg",
+        "selected": false
     },
     {
         "id": "6",
         "name": "sixth-image",
-        "src": "/images/sixth-image.jpg"
+        "src": "/images/sixth-image.jpg",
+        "selected": false
     },
     {
         "id": "7",
         "name": "seventh-image",
-        "src": "/images/seventh-image.jpg"
+        "src": "/images/seventh-image.jpg",
+        "selected": false
     },
     {
         "id": "8",
         "name": "eighth-image",
-        "src": "/images/eighth-image.jpg"
+        "src": "/images/eighth-image.jpg",
+        "selected": false
+    },
+    {
+        "id": "9",
+        "name": "first-image",
+        "src": "/images/first-image.jpg",
+        "selected": false
+    },
+    {
+        "id": "10",
+        "name": "second-image",
+        "src": "/images/second-image.jpg",
+        "selected": false
+    },
+    {
+        "id": "11",
+        "name": "third-image",
+        "src": "/images/third-image.jpg",
+        "selected": false
+    },
+    {
+        "id": "12",
+        "name": "fourth-image",
+        "src": "/images/fourth-image.jpg",
+        "selected": false
+    },
+    {
+        "id": "13",
+        "name": "fifth-image",
+        "src": "/images/fifth-image.jpg",
+        "selected": false
+    },
+    {
+        "id": "14",
+        "name": "sixth-image",
+        "src": "/images/sixth-image.jpg",
+        "selected": false
+    },
+    {
+        "id": "15",
+        "name": "seventh-image",
+        "src": "/images/seventh-image.jpg",
+        "selected": false
+    },
+    {
+        "id": "16",
+        "name": "eighth-image",
+        "src": "/images/eighth-image.jpg",
+        "selected": false
     }
 ]

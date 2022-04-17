@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { selectCard, cardMatch, cardDifferent, addToSelectList } from "../../actions";
+
 
 const CardWrap = styled.div`
     width: 200px;
@@ -20,27 +23,45 @@ const CardForward = styled(CardGeneral)`
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: perspective(1000px) rotateY(0deg);
-
-    ${CardWrap}:hover & {
-        transform: perspective(1000px) rotateY(180deg);
-    }
+    transform: ${props => !props.isOpen ? 'perspective(1000px) rotateY(0deg)' : 'perspective(1000px) rotateY(180deg)'};
 `
 const CardBack = styled(CardGeneral)`
     object-fit: fill;
-    transform: perspective(1000px) rotateY(-180deg);
-
-    ${CardWrap}:hover & {
-        transform: perspective(1000px) rotateY(0deg);
-    }
+    transform: ${props => !props.isOpen ? 'perspective(1000px) rotateY(-180deg)' : 'perspective(1000px) rotateY(0deg)'} ;
 `
 
 const Card = ({item}) => {
+
+    const dispatch = useDispatch()
+    const {selectedCard} = useSelector(state => ({
+        selectedCard: state.cardReducer.selectedCard
+    }))
+
+    const checkCardIsEqual = (card) => {
+        if (selectedCard.name == card.name) {
+            dispatch(cardMatch({
+                [card.name]: card.name
+            }))
+        } else {
+            dispatch(cardDifferent())
+        }
+    }
+
+    const cardClickHandle = () => {
+        console.log(item)
+        dispatch(selectCard(item))
+        if(selectedCard == null) {
+            dispatch(addToSelectList(item))
+        } else {
+            checkCardIsEqual(item) 
+        }
+        console.log(item)
+    }
     
     return (
-        <CardWrap>
-            <CardForward />
-            <CardBack as='img' src={item.src}/>
+        <CardWrap onClick={cardClickHandle}>
+            <CardForward isOpen={item.selected}/>
+            <CardBack as='img' src={item.src} isOpen={item.selected}/>
         </CardWrap>
     )
 }
