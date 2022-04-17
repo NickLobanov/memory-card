@@ -18,6 +18,7 @@ const LogoLink = styled(LinkBtn)`
 `
 const Nav = styled.div`
     width: 35%;
+    min-height: 26px;
     border-bottom: 1px solid black;
     display: flex;
     justify-content: space-between;
@@ -47,15 +48,23 @@ const Header = () => {
             <HeaderWrap>
                 <Nav>
                     <span>{userName}</span>
-                    <span>Score: 0000</span>
+                    {userName && <span>Score: 0000</span>}
+                    
                 </Nav>
                 <LogoLink to=''>
                     Memory Card
                 </LogoLink>
                 <NavRight>
-                    <LinkBtn to='leaderboard'>Leaderboard</LinkBtn>
-                    <LinkBtn to='settings'>Settings</LinkBtn>
-                    <LinkBtn as='p' onClick={exitHandle}>Exit</LinkBtn>
+                    
+                    {userName && 
+                    <>
+                        <LinkBtn to='leaderboard'>Leaderboard</LinkBtn>
+                        <LinkBtn to='settings'>Settings</LinkBtn>
+                        <LinkBtn as='p' onClick={exitHandle}>Exit</LinkBtn>
+                    </>
+                    
+                    }
+                    
                 </NavRight>
             </HeaderWrap>
             <Outlet />

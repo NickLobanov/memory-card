@@ -8,6 +8,7 @@ import Leaderboard from '../Leaderboard/Leaderboard';
 import { getCards } from '../../actions';
 import {useDispatch} from 'react-redux'
 import PrivatePath from '../../hoc/PrivatePath';
+import { createUser } from '../../actions';
 
 function App() {
 
@@ -15,6 +16,9 @@ function App() {
 
   useEffect(() => {
     dispatch(getCards())
+    if(localStorage.getItem('userName')) {
+      dispatch(createUser(localStorage.getItem('userName')))
+    }
   }, [])
 
   return (
