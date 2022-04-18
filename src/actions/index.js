@@ -79,3 +79,8 @@ export function shuffleCards(arr) {
         shuffledCards: arr
     }
 }
+export function clearSelectedList() {
+    return {
+        type: CLEAR_SELECTED_LIST
+    }
+}

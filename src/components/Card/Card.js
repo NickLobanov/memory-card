@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCard, cardMatch, cardDifferent, addToSelectList } from "../../actions";
+import { selectCard, cardMatch, cardDifferent, addToSelectList, clearSelectedList } from "../../actions";
 
 
 const CardWrap = styled.div`
@@ -9,6 +9,7 @@ const CardWrap = styled.div`
     height: 200px;
     position: relative;
     border: 1px solid black;
+    visibility: ${props => props.isMatched ? 'hidden' : 'visible'};
 `
 const CardGeneral = styled.div`
     position: absolute;
@@ -33,36 +34,39 @@ const CardBack = styled(CardGeneral)`
 const Card = ({item}) => {
 
     const dispatch = useDispatch()
-    const {selectedCard} = useSelector(state => ({
-        selectedCard: state.cardReducer.selectedCard
+    const {selectedCard, gameStatus} = useSelector(state => ({
+        selectedCard: state.cardReducer.selectedCard,
+        gameStatus: state.cardReducer.gameStatus
     }))
 
     const checkCardIsEqual = (card) => {
         if (selectedCard.name == card.name) {
-            dispatch(cardMatch({
-                [card.name]: card.name
-            }))
+            dispatch(cardMatch(card.name))
+            dispatch(clearSelectedList())
         } else {
             dispatch(cardDifferent())
+            dispatch(clearSelectedList())
         }
     }
 
     const cardClickHandle = () => {
-        console.log(item)
-        dispatch(selectCard(item))
-        if(selectedCard == null) {
-            dispatch(addToSelectList(item))
-        } else {
-            checkCardIsEqual(item) 
+        if (gameStatus) {
+            dispatch(selectCard(item))
+            if(selectedCard == null) {
+                dispatch(addToSelectList(item))
+            } else {
+                setTimeout(checkCardIsEqual, 1300, item)
+            }
         }
-        console.log(item)
+        
     }
     
     return (
-        <CardWrap onClick={cardClickHandle}>
+        <CardWrap onClick={cardClickHandle} isMatched={item.isMatched} disabled>
             <CardForward isOpen={item.selected}/>
             <CardBack as='img' src={item.src} isOpen={item.selected}/>
         </CardWrap>
+        
     )
 }
 

@@ -5,14 +5,14 @@ import {
     CARD_MATCH, 
     CARD_DIFFERENT,
     ADD_TO_SELECT_LIST,
-    SHUFFLE_CARDS } from "../actions"
+    SHUFFLE_CARDS,
+    CLEAR_SELECTED_LIST } from "../actions"
 
 const initialState = {
     cardList: [],
     cardTheme: '',
     gameStatus: false,
     selectedCard: null,
-    cardMatched: []
 }
 
 export const cardReducer = (state = initialState, action) => {
@@ -21,7 +21,9 @@ export const cardReducer = (state = initialState, action) => {
             return {...state, cardList: action.cards}
         }
         case GAME_START_STOP: {
-            return {...state, gameStatus: !state.gameStatus}
+            return {...state, gameStatus: !state.gameStatus, cardList: [...state.cardList].map(item => {
+                return {...item, selected: false, isMatched: false }
+            })}
         }
         case SELECT_CARD: {
             return {...state, cardList: [...state.cardList].map(item => {
@@ -33,10 +35,16 @@ export const cardReducer = (state = initialState, action) => {
             })}
         }
         case CARD_MATCH: {
-            return {...state, cardMatched: action.cardName}
+            return {...state, cardList: [...state.cardList].map(item => {
+                if(item.name == action.cardName) {
+                    return {...item, isMatched: true}
+                } else {
+                    return item
+                }
+            })}
         }
         case CARD_DIFFERENT: {
-            return {...state, selectedCard: null, cardList: [...state.cardList].map(item => {
+            return {...state, cardList: [...state.cardList].map(item => {
                 return {...item, selected: false}
             })}
         }
@@ -45,6 +53,9 @@ export const cardReducer = (state = initialState, action) => {
         }
         case SHUFFLE_CARDS: {
             return {...state, cardList: action.shuffledCards}
+        }
+        case CLEAR_SELECTED_LIST: {
+            return {...state, selectedCard: null}
         }
         default: {
             return state
