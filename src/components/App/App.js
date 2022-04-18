@@ -8,7 +8,7 @@ import Leaderboard from '../Leaderboard/Leaderboard';
 import { getCards } from '../../actions';
 import {useDispatch} from 'react-redux'
 import PrivatePath from '../../hoc/PrivatePath';
-import { createUser } from '../../actions';
+import { createUser } from '../../actions/user';
 
 function App() {
 

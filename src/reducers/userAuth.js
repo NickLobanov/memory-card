@@ -1,4 +1,4 @@
-import { CREATE_USER, PATCH_USER, DELETE_USER } from "../actions";
+import { CREATE_USER, PATCH_USER, DELETE_USER } from "../actions/user";
 
 const initialState = {
     userName: ''

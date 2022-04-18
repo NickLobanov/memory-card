@@ -2,7 +2,8 @@ import React from "react";
 import Card from "../Card/Card";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { gameStartStop, shuffleCards } from "../../actions";
+import { shuffleCards, cardReset } from "../../actions";
+import { gameStart, gameStop } from "../../actions/gameState";
 
 const MainContainer = styled.div`
     display: grid;
@@ -24,7 +25,7 @@ const Main = () => {
     const dispatch = useDispatch()
     const {cardList, gameStatus} = useSelector(state => ({
         cardList: state.cardReducer.cardList,
-        gameStatus: state.cardReducer.gameStatus
+        gameStatus: state.gameStateReducer.gameStatus
     }))
 
     const shuffleHandle = (arr) => {
@@ -36,14 +37,18 @@ const Main = () => {
             cards[j] = cards[i]
             cards[i] = temp
         }
-        console.log('shafle', cards)
         dispatch(shuffleCards(cards))
     }
 
 
     const startStopGameHandler = () => {
-        shuffleHandle(cardList)
-        dispatch(gameStartStop())
+        if(gameStatus) {
+            dispatch(cardReset())
+            dispatch(gameStop())
+        } else {
+            dispatch(gameStart())
+            shuffleHandle(cardList)
+        }
     }
 
 

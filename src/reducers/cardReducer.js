@@ -1,17 +1,16 @@
 import { 
-    GET_CARDS,
-    GAME_START_STOP, 
+    GET_CARDS, 
     SELECT_CARD,  
     CARD_MATCH, 
-    CARD_DIFFERENT,
+    CARD_CLOSE,
     ADD_TO_SELECT_LIST,
     SHUFFLE_CARDS,
-    CLEAR_SELECTED_LIST } from "../actions"
+    CLEAR_SELECTED_LIST,
+    CARD_RESET } from "../actions"
 
 const initialState = {
     cardList: [],
     cardTheme: '',
-    gameStatus: false,
     selectedCard: null,
 }
 
@@ -19,11 +18,6 @@ export const cardReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_CARDS: {
             return {...state, cardList: action.cards}
-        }
-        case GAME_START_STOP: {
-            return {...state, gameStatus: !state.gameStatus, cardList: [...state.cardList].map(item => {
-                return {...item, selected: false, isMatched: false }
-            })}
         }
         case SELECT_CARD: {
             return {...state, cardList: [...state.cardList].map(item => {
@@ -43,7 +37,7 @@ export const cardReducer = (state = initialState, action) => {
                 }
             })}
         }
-        case CARD_DIFFERENT: {
+        case CARD_CLOSE: {
             return {...state, cardList: [...state.cardList].map(item => {
                 return {...item, selected: false}
             })}
@@ -56,6 +50,11 @@ export const cardReducer = (state = initialState, action) => {
         }
         case CLEAR_SELECTED_LIST: {
             return {...state, selectedCard: null}
+        }
+        case CARD_RESET: {
+            return {...state, selectedCard: null, cardList: [...state.cardList].map(item => {
+                return {...item, isMatched: false, selected: false}
+            })}
         }
         default: {
             return state

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import styled from "styled-components";
 import { Form } from "../../styles/components/Form";
-import { createUser } from "../../actions";
+import { createUser } from "../../actions/user";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

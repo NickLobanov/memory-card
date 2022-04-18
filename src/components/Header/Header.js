@@ -4,7 +4,7 @@ import { Wrapper } from "../../styles/components/Wrapper";
 import { HeaderWrap } from "../../styles/components/HeaderWrap";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteUser } from "../../actions";
+import { deleteUser } from "../../actions/user";
 
 const LinkBtn = styled(Link)`
     color: black;
