@@ -7,9 +7,11 @@ import { gameStart, gameStop } from "../../actions/gameState";
 
 const MainContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 15%);
     grid-template-rows: repeat(2, 1fr);
-    gap: 15px;
+    row-gap: 20px;
+    justify-items: stretch;
+    justify-content: space-between;
 `
 const MainBtn = styled.button`
     border: none;

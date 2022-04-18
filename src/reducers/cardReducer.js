@@ -10,7 +10,7 @@ import {
 
 const initialState = {
     cardList: [],
-    cardTheme: '',
+    cardTheme: '/images/background-one.jpg',
     selectedCard: null,
 }
 

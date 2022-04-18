@@ -5,8 +5,7 @@ import { selectCard, cardMatch, cardClose, addToSelectList, clearSelectedList } 
 
 
 const CardWrap = styled.div`
-    width: 200px;
-    height: 200px;
+    height: 250px;
     position: relative;
     border: 1px solid black;
     visibility: ${props => props.isMatched ? 'hidden' : 'visible'};
@@ -27,16 +26,17 @@ const CardForward = styled(CardGeneral)`
     transform: ${props => !props.isOpen ? 'perspective(1000px) rotateY(0deg)' : 'perspective(1000px) rotateY(180deg)'};
 `
 const CardBack = styled(CardGeneral)`
-    object-fit: fill;
+    object-fit: cover;
     transform: ${props => !props.isOpen ? 'perspective(1000px) rotateY(-180deg)' : 'perspective(1000px) rotateY(0deg)'} ;
 `
 
 const Card = ({item}) => {
 
     const dispatch = useDispatch()
-    const {selectedCard, gameStatus} = useSelector(state => ({
+    const {selectedCard, gameStatus, cardTheme} = useSelector(state => ({
         selectedCard: state.cardReducer.selectedCard,
-        gameStatus: state.gameStateReducer.gameStatus
+        gameStatus: state.gameStateReducer.gameStatus,
+        cardTheme: state.cardReducer.cardTheme
     }))
 
     const checkCardIsEqual = (card) => {
@@ -64,7 +64,7 @@ const Card = ({item}) => {
     
     return (
         <CardWrap onClick={cardClickHandle} isMatched={item.isMatched} disabled>
-            <CardForward isOpen={item.selected}/>
+            <CardForward as='img' src={cardTheme} isOpen={item.selected}/>
             <CardBack as='img' src={item.src} isOpen={item.selected}/>
         </CardWrap>
         
