@@ -1,6 +1,7 @@
 import axios from "axios"
 
 export const GET_CARDS = 'GET_CARDS'
+export const GET_BG_IMAGES = 'GET_BG_IMAGES'
 export const SELECT_CARD = 'SELECT_CARD'
 export const ADD_TO_SELECT_LIST = 'ADD_TO_SELECT_LIST'
 export const CLEAR_SELECTED_LIST = 'CLEAR_SELECTED_LIST'
@@ -8,6 +9,7 @@ export const CARD_MATCH = 'CARD_MATCH'
 export const CARD_CLOSE = 'CARD_CLOSE'
 export const SHUFFLE_CARDS = 'SHUFFLE_CARDS'
 export const CARD_RESET = 'CARD_RESET'
+export const PATCH_CARD_THEME = 'PATCH_CARD_THEME'
 
 
 export function getCards() {
@@ -17,6 +19,17 @@ export function getCards() {
                 dispatch({
                     type: GET_CARDS,
                     cards: res.data
+                })
+            })
+    }
+}
+export function getBgImages() {
+    return function(dispatch) {
+        axios.get('../bgImage.json')
+            .then(res => {
+                dispatch({
+                    type: GET_BG_IMAGES,
+                    bgImages: res.data
                 })
             })
     }
@@ -62,5 +75,11 @@ export function clearSelectedList() {
 export function cardReset() {
     return {
         type: CARD_RESET
+    }
+}
+export function patchCardTheme(newTheme) {
+    return {
+        type: PATCH_CARD_THEME,
+        newTheme
     }
 }

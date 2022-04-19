@@ -5,7 +5,7 @@ import Auth from '../Auth/Auth';
 import Main from '../Main/Main';
 import Settings from '../Settings/Settings';
 import Leaderboard from '../Leaderboard/Leaderboard';
-import { getCards } from '../../actions';
+import { getCards, getBgImages } from '../../actions';
 import {useDispatch} from 'react-redux'
 import PrivatePath from '../../hoc/PrivatePath';
 import { createUser } from '../../actions/user';
@@ -19,6 +19,7 @@ function App() {
     if(localStorage.getItem('userName')) {
       dispatch(createUser(localStorage.getItem('userName')))
     }
+    dispatch(getBgImages())
   }, [])
 
   return (
