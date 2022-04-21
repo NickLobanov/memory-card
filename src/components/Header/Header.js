@@ -31,8 +31,9 @@ const NavRight = styled(Nav)`
 
 const Header = () => {
 
-    const {userName} = useSelector(state => ({
-        userName: state.userReducer.userName
+    const {userName, gameScore} = useSelector(state => ({
+        userName: state.userReducer.userName,
+        gameScore: state.gameStateReducer.gameScore
     }))
     const dispatch = useDispatch()
     let navigate = useNavigate()
@@ -48,7 +49,7 @@ const Header = () => {
             <HeaderWrap>
                 <Nav>
                     <span>{userName}</span>
-                    {userName && <span>Score: 0000</span>}
+                    {userName && <span>Score: {gameScore}</span>}
                     
                 </Nav>
                 <LogoLink to=''>

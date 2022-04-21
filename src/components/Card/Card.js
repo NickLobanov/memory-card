@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCard, cardMatch, cardClose, addToSelectList, clearSelectedList } from "../../actions";
+import { increaseScore, decreaseScore } from "../../actions/gameState";
 
 
 const CardWrap = styled.div`
@@ -42,9 +43,11 @@ const Card = ({item}) => {
     const checkCardIsEqual = (card) => {
         if (selectedCard.name == card.name) {
             dispatch(cardMatch(card.name))
+            dispatch(increaseScore())
             dispatch(cardClose())
             dispatch(clearSelectedList())
         } else {
+            dispatch(decreaseScore())
             dispatch(cardClose())
             dispatch(clearSelectedList())
         }
