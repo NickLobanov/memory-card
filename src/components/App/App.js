@@ -15,7 +15,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getCards())
+    dispatch(getCards(12))
     if(localStorage.getItem('userName')) {
       dispatch(createUser(localStorage.getItem('userName')))
     }

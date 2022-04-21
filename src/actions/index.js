@@ -12,10 +12,11 @@ export const CARD_RESET = 'CARD_RESET'
 export const PATCH_CARD_THEME = 'PATCH_CARD_THEME'
 
 
-export function getCards() {
+export function getCards(cardLength) {
     return function(dispatch) {
         axios.get('../image.json')
             .then(res => {
+                res.data.length = cardLength
                 dispatch({
                     type: GET_CARDS,
                     cards: res.data

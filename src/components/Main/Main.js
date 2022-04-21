@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../Card/Card";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { shuffleCards, cardReset } from "../../actions";
+import { shuffleCards, cardReset, getCards } from "../../actions";
 import { gameStart, gameStop } from "../../actions/gameState";
 
 const MainContainer = styled.div`
@@ -17,9 +17,22 @@ const MainBtn = styled.button`
     border: none;
     padding: 10px 12px;
     border-radius: 7px;
-    margin-bottom: 25px;
     font-size: 18px;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
+`
+const Wrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+`
+const Selector = styled.select`
+    width: 15%;
+    border-radius: 7px;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+
 `
 
 const Main = () => {
@@ -29,6 +42,11 @@ const Main = () => {
         cardList: state.cardReducer.cardList,
         gameStatus: state.gameStateReducer.gameStatus
     }))
+
+    const changeComplexity = (e) => {
+        dispatch(getCards(+e.target.value))
+
+    }
 
     const shuffleHandle = (arr) => {
         let cards = Object.assign([], arr)
@@ -57,7 +75,16 @@ const Main = () => {
 
     return (
         <>
-            <MainBtn onClick={startStopGameHandler}>{!gameStatus ? 'Начать' : 'Завершить'}</MainBtn>
+            <Wrapper>
+                <MainBtn onClick={startStopGameHandler}>{!gameStatus ? 'Начать' : 'Завершить'}</MainBtn>
+                <Selector defaultValue='null' onChange={changeComplexity}>
+                    <option value='null' hidden disabled>Выберите сложность</option>
+                    <option value='8'>Simple</option>
+                    <option value='12'>Medium</option>
+                    <option value='16'>Hard</option>
+                </Selector>
+            </Wrapper>
+            
             <MainContainer>
                 {cardList.map(item => (
                     <Card item={item} key={item.id}/>
