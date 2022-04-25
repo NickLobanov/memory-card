@@ -44,13 +44,12 @@ const Card = ({item}) => {
         if (selectedCard.name == card.name) {
             dispatch(cardMatch(card.name))
             dispatch(increaseScore())
-            dispatch(cardClose())
-            dispatch(clearSelectedList())
         } else {
             dispatch(decreaseScore())
-            dispatch(cardClose())
-            dispatch(clearSelectedList())
         }
+        
+        dispatch(cardClose())
+        dispatch(clearSelectedList())
     }
 
     const cardClickHandle = () => {

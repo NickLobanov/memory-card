@@ -14,7 +14,8 @@ const initialState = {
     cardList: [],
     cardTheme: '/images/background-one.jpg',
     selectedCard: null,
-    bgImages: []
+    bgImages: [],
+    cardMatched: 0
 }
 
 export const cardReducer = (state = initialState, action) => {
@@ -35,7 +36,7 @@ export const cardReducer = (state = initialState, action) => {
             })}
         }
         case CARD_MATCH: {
-            return {...state, cardList: [...state.cardList].map(item => {
+            return {...state, cardMatched: state.cardMatched +=2, cardList: [...state.cardList].map(item => {
                 if(item.name == action.cardName) {
                     return {...item, isMatched: true}
                 } else {
@@ -58,7 +59,7 @@ export const cardReducer = (state = initialState, action) => {
             return {...state, selectedCard: null}
         }
         case CARD_RESET: {
-            return {...state, selectedCard: null, cardList: [...state.cardList].map(item => {
+            return {...state, selectedCard: null, cardMatched: 0, cardList: [...state.cardList].map(item => {
                 return {...item, isMatched: false, selected: false}
             })}
         }

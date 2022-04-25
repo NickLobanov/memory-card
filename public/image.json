@@ -7,7 +7,21 @@
         "isMatched": false
     },
     {
+        "id": "9",
+        "name": "first-image",
+        "src": "/images/one.jpg",
+        "selected": false,
+        "isMatched": false
+    },
+    {
         "id": "2",
+        "name": "second-image",
+        "src": "/images/two.jpg",
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "10",
         "name": "second-image",
         "src": "/images/two.jpg",
         "selected": false,
@@ -21,7 +35,21 @@
         "isMatched": false
     },
     {
+        "id": "11",
+        "name": "third-image",
+        "src": "/images/three.jpg",
+        "selected": false,
+        "isMatched": false
+    },
+    {
         "id": "4",
+        "name": "fourth-image",
+        "src": "/images/four.jpg",
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "12",
         "name": "fourth-image",
         "src": "/images/four.jpg",
         "selected": false,
@@ -35,7 +63,21 @@
         "isMatched": false
     },
     {
+        "id": "13",
+        "name": "fifth-image",
+        "src": "/images/five.jpg",
+        "selected": false,
+        "isMatched": false
+    },
+    {
         "id": "6",
+        "name": "sixth-image",
+        "src": "/images/six.jpg",
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "14",
         "name": "sixth-image",
         "src": "/images/six.jpg",
         "selected": false,
@@ -49,58 +91,16 @@
         "isMatched": false
     },
     {
-        "id": "8",
-        "name": "eighth-image",
-        "src": "/images/eight.jpg",
-        "selected": false,
-        "isMatched": false
-    },
-    {
-        "id": "9",
-        "name": "first-image",
-        "src": "/images/one.jpg",
-        "selected": false,
-        "isMatched": false
-    },
-    {
-        "id": "10",
-        "name": "second-image",
-        "src": "/images/two.jpg",
-        "selected": false,
-        "isMatched": false
-    },
-    {
-        "id": "11",
-        "name": "third-image",
-        "src": "/images/three.jpg",
-        "selected": false,
-        "isMatched": false
-    },
-    {
-        "id": "12",
-        "name": "fourth-image",
-        "src": "/images/four.jpg",
-        "selected": false,
-        "isMatched": false
-    },
-    {
-        "id": "13",
-        "name": "fifth-image",
-        "src": "/images/five.jpg",
-        "selected": false,
-        "isMatched": false
-    },
-    {
-        "id": "14",
-        "name": "sixth-image",
-        "src": "/images/six.jpg",
-        "selected": false,
-        "isMatched": false
-    },
-    {
         "id": "15",
         "name": "seventh-image",
         "src": "/images/seven.jpg",
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "8",
+        "name": "eighth-image",
+        "src": "/images/eight.jpg",
         "selected": false,
         "isMatched": false
     },

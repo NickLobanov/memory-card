@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../Card/Card";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { shuffleCards, cardReset, getCards } from "../../actions";
+import { shuffleCards, cardReset, getCards, cardMatch } from "../../actions";
 import { gameStart, gameStop } from "../../actions/gameState";
 
 const MainContainer = styled.div`
@@ -21,26 +21,40 @@ const MainBtn = styled.button`
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
 `
 const Wrapper = styled.div`
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: ${props => props.justifyContent || 'space-between'};
     margin-bottom: 25px;
 `
+const WrapperNotice = styled(Wrapper)`
+    flex-direction: column;
+    width: 35%;
+    justify-content: center;
+    margin: 0 auto;
+`
+
 const Selector = styled.select`
     width: 15%;
     border-radius: 7px;
     padding: 5px 10px;
     font-size: 16px;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
-
+`
+const Text = styled.p`
+    font-size: 22px;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    margin: 0;
+    margin-bottom: 25px;
 `
 
 const Main = () => {
 
     const dispatch = useDispatch()
-    const {cardList, gameStatus} = useSelector(state => ({
+    const {cardList, gameStatus, cardMatched} = useSelector(state => ({
         cardList: state.cardReducer.cardList,
-        gameStatus: state.gameStateReducer.gameStatus
+        gameStatus: state.gameStateReducer.gameStatus,
+        cardMatched: state.cardReducer.cardMatched
     }))
 
     const changeComplexity = (e) => {
@@ -90,6 +104,17 @@ const Main = () => {
                     <Card item={item} key={item.id}/>
                 ))}
             </MainContainer>
+
+            {
+                cardMatched == cardList.length && 
+                <WrapperNotice>
+                    <Text>Игра окончена. Хотите повторить?</Text>
+                    <Wrapper justifyContent={'space-around'}>
+                        <MainBtn onClick={() => dispatch(cardReset())}>Повторить</MainBtn>
+                        <MainBtn onClick={startStopGameHandler}>Завершить</MainBtn>
+                    </Wrapper>
+                </WrapperNotice>
+            }
         </>
         
     )
