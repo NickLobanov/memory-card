@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Card from "../Card/Card";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { shuffleCards, cardReset, getCards, cardMatch } from "../../actions";
-import { gameStart, gameStop } from "../../actions/gameState";
+import { shuffleCards, cardReset, getCards } from "../../actions";
+import { gameStart, gameStop, updateLeaderboard } from "../../actions/gameState";
 
 const MainContainer = styled.div`
     display: grid;
@@ -51,16 +51,37 @@ const Text = styled.p`
 const Main = () => {
 
     const dispatch = useDispatch()
-    const {cardList, gameStatus, cardMatched} = useSelector(state => ({
+    const {cardList, gameStatus, cardMatched, leaderBoard, gameScore, userName} = useSelector(state => ({
         cardList: state.cardReducer.cardList,
         gameStatus: state.gameStateReducer.gameStatus,
-        cardMatched: state.cardReducer.cardMatched
+        cardMatched: state.cardReducer.cardMatched,
+        leaderBoard: state.gameStateReducer.leaderBoard,
+        gameScore: state.gameStateReducer.gameScore,
+        userName: state.userReducer.userName
     }))
 
     const changeComplexity = (e) => {
         dispatch(getCards(+e.target.value))
 
     }
+
+    const sortByField = (field) => {
+        return (a, b) => b[field] > a[field] ? 1 : -1
+    }
+
+    useEffect(() => {
+        if(cardMatched == cardList.length) {
+            let newLeaderboard = Object.assign([], leaderBoard)
+            newLeaderboard.push({
+                name: userName,
+                score: gameScore
+            })
+            newLeaderboard.sort(sortByField('score'))
+            newLeaderboard.length = 10
+            localStorage.setItem('leaderBoard', JSON.stringify(newLeaderboard))
+            dispatch(updateLeaderboard(newLeaderboard))
+        }
+    }, [cardMatched])
 
     const shuffleHandle = (arr) => {
         let cards = Object.assign([], arr)

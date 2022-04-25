@@ -2,11 +2,13 @@ import {
     GAME_START,     
     GAME_STOP,
     INCREASE_SCORE,
-    DECREASE_SCORE } from "../actions/gameState";
+    DECREASE_SCORE,
+    UPDATE_LEADERBOARD } from "../actions/gameState";
 
 const initialState = {
     gameStatus: false,
-    gameScore: 0
+    gameScore: 0,
+    leaderBoard: []
 }
 
 export const gameStateReducer = (state = initialState, action) => {
@@ -21,7 +23,10 @@ export const gameStateReducer = (state = initialState, action) => {
             return {...state, gameScore: state.gameScore +=50}
         }
         case DECREASE_SCORE: {
-            return {...state, gameScore: state.gameScore == '0000' ? state.gameScore : state.gameScore -= 10}
+            return {...state, gameScore: state.gameScore == 0 ? state.gameScore : state.gameScore -= 10}
+        }
+        case UPDATE_LEADERBOARD: {
+            return {...state, leaderBoard: action.newArr}
         }
         default: {
             return state

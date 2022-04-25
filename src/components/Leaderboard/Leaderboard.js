@@ -28,19 +28,18 @@ const BoardTitle = styled.h2`
 
 const Leaderboard = () => {
 
+    let leaderBoardArr = JSON.parse(localStorage.getItem('leaderBoard'))     
+
     return (
         <LeaderContainer>
             <BoardTitle>Таблица Лидеров</BoardTitle>
-            <ItemWrap>1. adsad</ItemWrap>
-            <ItemWrap>2. adas</ItemWrap>
-            <ItemWrap>1. adsad</ItemWrap>
-            <ItemWrap>2. adas</ItemWrap>
-            <ItemWrap>1. adsad</ItemWrap>
-            <ItemWrap>2. adas</ItemWrap>
-            <ItemWrap>1. adsad</ItemWrap>
-            <ItemWrap>2. adas</ItemWrap>
-            <ItemWrap>1. adsad</ItemWrap>
-            <ItemWrap>2. adas</ItemWrap>
+            {leaderBoardArr.map((item, index) => (
+                item ?
+                <ItemWrap key={index}>{index + 1}. {item.name} {item.score}</ItemWrap> :
+                <ItemWrap key={index}>{index + 1}. </ItemWrap>
+            ))}
+            
+            
         </LeaderContainer>
     )
 }
