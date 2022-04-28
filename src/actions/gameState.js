@@ -3,6 +3,7 @@ export const GAME_STOP = 'GAME_STOP'
 export const INCREASE_SCORE = 'INCREASE_SCORE'
 export const DECREASE_SCORE = 'DECREASE_SCORE'
 export const UPDATE_LEADERBOARD = 'UPDATE_LEADERBOARD'
+export const RESET_SCORE = 'RESET_SCORE'
 
 export function gameStart() {
     return {
@@ -28,5 +29,10 @@ export function updateLeaderboard(newArr) {
     return {
         type: UPDATE_LEADERBOARD,
         newArr
+    }
+}
+export function resetScore() {
+    return {
+        type: RESET_SCORE
     }
 }

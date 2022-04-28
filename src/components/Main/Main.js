@@ -3,7 +3,7 @@ import Card from "../Card/Card";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { shuffleCards, cardReset, getCards } from "../../actions";
-import { gameStart, gameStop, updateLeaderboard } from "../../actions/gameState";
+import { gameStart, gameStop, updateLeaderboard, resetScore } from "../../actions/gameState";
 
 const MainContainer = styled.div`
     display: grid;
@@ -85,6 +85,7 @@ const Main = () => {
 
     const shuffleHandle = (arr) => {
         let cards = Object.assign([], arr)
+        console.log(cards)
         let j, temp
         for (let i = cards.length - 1; i > 0; i--) {
             j = Math.floor(Math.random() * (i + 1))
@@ -100,10 +101,17 @@ const Main = () => {
         if(gameStatus) {
             dispatch(cardReset())
             dispatch(gameStop())
+            dispatch(resetScore())
         } else {
             dispatch(gameStart())
             shuffleHandle(cardList)
         }
+    }
+
+    const resetGameHandler = () => {
+        shuffleHandle(cardList)
+        dispatch(cardReset())
+        dispatch(resetScore())
     }
 
 
@@ -131,7 +139,7 @@ const Main = () => {
                 <WrapperNotice>
                     <Text>Игра окончена. Хотите повторить?</Text>
                     <Wrapper justifyContent={'space-around'}>
-                        <MainBtn onClick={() => dispatch(cardReset())}>Повторить</MainBtn>
+                        <MainBtn onClick={resetGameHandler}>Повторить</MainBtn>
                         <MainBtn onClick={startStopGameHandler}>Завершить</MainBtn>
                     </Wrapper>
                 </WrapperNotice>

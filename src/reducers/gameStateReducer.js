@@ -3,7 +3,8 @@ import {
     GAME_STOP,
     INCREASE_SCORE,
     DECREASE_SCORE,
-    UPDATE_LEADERBOARD } from "../actions/gameState";
+    UPDATE_LEADERBOARD,
+    RESET_SCORE } from "../actions/gameState";
 
 const initialState = {
     gameStatus: false,
@@ -27,6 +28,9 @@ export const gameStateReducer = (state = initialState, action) => {
         }
         case UPDATE_LEADERBOARD: {
             return {...state, leaderBoard: action.newArr}
+        }
+        case RESET_SCORE: {
+            return {...state, gameScore: 0}
         }
         default: {
             return state
