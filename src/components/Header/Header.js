@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { deleteUser } from "../../actions/user";
 
 const LinkBtn = styled(Link)`
-    color: black;
+    color: #66FCF1;
     text-decoration: none;
     margin-left: 15px;
     cursor: pointer;
@@ -19,11 +19,12 @@ const LogoLink = styled(LinkBtn)`
 const Nav = styled.div`
     width: 35%;
     min-height: 26px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #66FCF1;
     display: flex;
     justify-content: space-between;
     font-size: 22px;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    color: #66FCF1;
 `
 const NavRight = styled(Nav)`
     justify-content: flex-end;

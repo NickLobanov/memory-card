@@ -6,7 +6,6 @@ import { increaseScore, decreaseScore } from "../../actions/gameState";
 
 
 const CardWrap = styled.div`
-    height: 250px;
     position: relative;
     border: 1px solid black;
     visibility: ${props => props.isMatched ? 'hidden' : 'visible'};
@@ -25,6 +24,7 @@ const CardForward = styled(CardGeneral)`
     justify-content: center;
     align-items: center;
     transform: ${props => !props.isOpen ? 'perspective(1000px) rotateY(0deg)' : 'perspective(1000px) rotateY(180deg)'};
+    object-fit: cover;
 `
 const CardBack = styled(CardGeneral)`
     object-fit: cover;

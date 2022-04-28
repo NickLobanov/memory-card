@@ -6,10 +6,12 @@ import { shuffleCards, cardReset, getCards } from "../../actions";
 import { gameStart, gameStop, updateLeaderboard, resetScore } from "../../actions/gameState";
 
 const MainContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(4, 15%);
+    display: ${props => props.display ? 'none' : 'grid'};
+    height: calc(100vh - 200px);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    row-gap: 20px;
+    grid-auto-rows: 1fr;
+    gap: 10px;
     justify-items: stretch;
     justify-content: space-between;
 `
@@ -32,6 +34,7 @@ const WrapperNotice = styled(Wrapper)`
     width: 35%;
     justify-content: center;
     margin: 0 auto;
+    margin-top: 20%;
 `
 
 const Selector = styled.select`
@@ -40,6 +43,7 @@ const Selector = styled.select`
     padding: 5px 10px;
     font-size: 16px;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    display: ${props => props.isVisible ? 'none' : 'block'};
 `
 const Text = styled.p`
     font-size: 22px;
@@ -117,10 +121,10 @@ const Main = () => {
 
 
     return (
-        <>
+        <>  
             <Wrapper>
                 <MainBtn onClick={startStopGameHandler}>{!gameStatus ? 'Начать' : 'Завершить'}</MainBtn>
-                <Selector defaultValue='null' onChange={changeComplexity}>
+                <Selector isVisible={gameStatus} defaultValue='null' onChange={changeComplexity}>
                     <option value='null' hidden disabled>Выберите сложность</option>
                     <option value='8'>Simple</option>
                     <option value='12'>Medium</option>
@@ -128,7 +132,7 @@ const Main = () => {
                 </Selector>
             </Wrapper>
             
-            <MainContainer>
+            <MainContainer display={cardMatched == cardList.length}>
                 {cardList.map(item => (
                     <Card item={item} key={item.id}/>
                 ))}

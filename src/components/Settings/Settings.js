@@ -6,9 +6,7 @@ import { putchUser } from "../../actions/user";
 import { patchCardTheme } from "../../actions";
 
 const SettingsCont = styled.form`
-    width: 80%;
     margin: 0 auto;
-    height: calc(100vh - 20%);
     display: flex;
     flex-direction: column;
 `
@@ -25,7 +23,7 @@ const CardsWrap = styled.div`
     margin-bottom: 100px;
 `
 const CardExapmle = styled.img`
-    width: 20%;
+    width: 230px;
     height: 320px;
     box-shadow: ${props => props.bgImage && '0px 0px 10px 5px rgba(0, 255, 142, 0.2)'};
 `
@@ -50,12 +48,13 @@ const Settings = () => {
 
     const dispatch = useDispatch()
     let navigate = useNavigate()
-    const {bgImages, cardTheme} = useSelector(state => ({
+    const {bgImages, cardTheme, userName} = useSelector(state => ({
         bgImages: state.cardReducer.bgImages,
-        cardTheme: state.cardReducer.cardTheme
+        cardTheme: state.cardReducer.cardTheme,
+        userName: state.userReducer.userName
     }))
 
-    const [inputValue, setInputValue] = useState()
+    const [inputValue, setInputValue] = useState(userName)
     const [selectedCardTheme, setCardTheme] = useState(cardTheme)
 
     const handleFormSubmit = (e) => {

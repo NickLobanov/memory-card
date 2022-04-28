@@ -6,8 +6,8 @@ const LeaderContainer = styled.div`
     flex-direction: column;
     gap: 30px;
     width:80%;
-    height: calc(100vh - 15%);
     margin: 0 auto;
+    margin-bottom: 30px;
     padding: 40px;
     border-radius: 20px;
     border: 1px solid black;

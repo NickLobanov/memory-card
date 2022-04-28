@@ -8,6 +8,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #0B172A;
 }
 h1,h2,h3,h4,h5,h6,p {
   margin: 0
