@@ -7,7 +7,6 @@ import { increaseScore, decreaseScore } from "../../actions/gameState";
 
 const CardWrap = styled.div`
     position: relative;
-    border: 1px solid black;
     visibility: ${props => props.isMatched ? 'hidden' : 'visible'};
 `
 const CardGeneral = styled.div`

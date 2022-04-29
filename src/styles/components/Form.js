@@ -2,14 +2,12 @@ import styled from "styled-components";
 
 export const Form = styled.form`
         width: 40%;
-        background-color: black;
+        margin: 0 auto;
+        margin-top: 30%;
+        background-color: transparent;
         display: flex;
         flex-direction: column;
-        border: none;
+        border: 1px solid #66FCF1;
         border-radius: 10px;
         padding: 20px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
     `

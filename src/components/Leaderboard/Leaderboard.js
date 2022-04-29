@@ -10,20 +10,22 @@ const LeaderContainer = styled.div`
     margin-bottom: 30px;
     padding: 40px;
     border-radius: 20px;
-    border: 1px solid black;
+    border: 1px solid #66FCF1;
     box-sizing: border-box;
-    background-color: rgba(0,0,0, 0.5);
+    background-color: transparent;
 `
 const ItemWrap = styled.p`
     font-size: 32px;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #66FCF1;
+    color: #66FCF1;
 `
 const BoardTitle = styled.h2`
     font-size: 36px;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     margin-bottom: 30px;
     text-align: center;
+    color: #66FCF1;
 `
 
 const Leaderboard = () => {

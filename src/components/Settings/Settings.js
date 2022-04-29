@@ -15,6 +15,7 @@ const SettingsTitle = styled.h2`
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     margin: 0;
     margin-bottom: 20px;
+    color: #66FCF1;
 `
 const CardsWrap = styled.div`
     display: flex;
@@ -25,7 +26,7 @@ const CardsWrap = styled.div`
 const CardExapmle = styled.img`
     width: 230px;
     height: 320px;
-    box-shadow: ${props => props.bgImage && '0px 0px 10px 5px rgba(0, 255, 142, 0.2)'};
+    box-shadow: ${props => props.bgImage && '0px 0px 10px 5px rgba(102,252,241, 0.2)'};
 `
 const SettingsInput = styled.input`
     width: 40%;
@@ -34,6 +35,10 @@ const SettingsInput = styled.input`
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     font-size: 16px;
     margin-bottom: 60px;
+    background-color: transparent;
+    border: 1px solid #66FCF1;
+    outline: none;
+    color: #66FCF1;
 `
 const SubmitBtn = styled.button`
     font-size: 18px;
@@ -42,6 +47,8 @@ const SubmitBtn = styled.button`
     border-radius: 7px;
     background-color: transparent;
     width: 15%;
+    border: 1px solid #66FCF1;
+    color: #66FCF1;
 `
 
 const Settings = () => {

@@ -6,7 +6,7 @@ import { shuffleCards, cardReset, getCards } from "../../actions";
 import { gameStart, gameStop, updateLeaderboard, resetScore } from "../../actions/gameState";
 
 const MainContainer = styled.div`
-    display: ${props => props.display ? 'none' : 'grid'};
+    display: ${props => props.isVisible ? 'none' : 'grid'};
     height: calc(100vh - 200px);
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -17,10 +17,13 @@ const MainContainer = styled.div`
 `
 const MainBtn = styled.button`
     border: none;
-    padding: 10px 12px;
+    padding: 5px 10px;
     border-radius: 7px;
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    color: #66FCF1;
+    background-color: transparent;
+    border: 1px solid #66FCF1;
 `
 const Wrapper = styled.div`
     width: 100%;
@@ -35,21 +38,29 @@ const WrapperNotice = styled(Wrapper)`
     justify-content: center;
     margin: 0 auto;
     margin-top: 20%;
+    border: 1px solid #66FCF1;
+    border-radius: 7px;
+    padding: 20px;
 `
 
 const Selector = styled.select`
-    width: 15%;
+    width: 250px;
     border-radius: 7px;
     padding: 5px 10px;
     font-size: 16px;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     display: ${props => props.isVisible ? 'none' : 'block'};
+    border: 1px solid #66FCF1;
+    background-color: transparent;
+    color: #66FCF1;
+    outline: none;
 `
 const Text = styled.p`
     font-size: 22px;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     margin: 0;
-    margin-bottom: 25px;
+    margin-bottom: 35px;
+    color: #66FCF1;
 `
 
 const Main = () => {
@@ -132,7 +143,7 @@ const Main = () => {
                 </Selector>
             </Wrapper>
             
-            <MainContainer display={cardMatched == cardList.length}>
+            <MainContainer isVisible={cardMatched == cardList.length}>
                 {cardList.map(item => (
                     <Card item={item} key={item.id}/>
                 ))}
