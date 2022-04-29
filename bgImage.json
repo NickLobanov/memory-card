@@ -1,0 +1,14 @@
+[
+    {
+        "name": "background-one",
+        "url": "/images/background-one.jpg"
+    },
+    {
+        "name": "background-two",
+        "url": "/images/background-two.jpg"
+    },
+    {
+        "name": "background-three",
+        "url": "/images/background-three.jpg"
+    }
+]
