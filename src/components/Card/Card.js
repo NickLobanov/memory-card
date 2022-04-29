@@ -30,7 +30,7 @@ const CardBack = styled(CardGeneral)`
     transform: ${props => !props.isOpen ? 'perspective(1000px) rotateY(-180deg)' : 'perspective(1000px) rotateY(0deg)'} ;
 `
 
-const Card = ({item}) => {
+const Card = ({item, openCards}) => {
 
     const dispatch = useDispatch()
     const {selectedCard, gameStatus, cardTheme} = useSelector(state => ({
@@ -64,9 +64,9 @@ const Card = ({item}) => {
     }
     
     return (
-        <CardWrap onClick={cardClickHandle} isMatched={item.isMatched} disabled>
-            <CardForward as='img' src={cardTheme} isOpen={item.selected}/>
-            <CardBack as='img' src={item.src} isOpen={item.selected}/>
+        <CardWrap onClick={cardClickHandle} isMatched={item.isMatched}>
+            <CardForward as='img' src={cardTheme} isOpen={item.selected || openCards}/>
+            <CardBack as='img' src={item.src} isOpen={item.selected || openCards}/>
         </CardWrap>
         
     )

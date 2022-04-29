@@ -1,9 +1,10 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Card from "../Card/Card";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { shuffleCards, cardReset, getCards } from "../../actions";
+import { shuffleCards, cardReset, getCards, openCards } from "../../actions";
 import { gameStart, gameStop, updateLeaderboard, resetScore } from "../../actions/gameState";
+import { motion } from "framer-motion";
 
 const MainContainer = styled.div`
     display: ${props => props.isVisible ? 'none' : 'grid'};
@@ -75,6 +76,8 @@ const Main = () => {
         userName: state.userReducer.userName
     }))
 
+    const [openCards, setOpenCards] = useState(false)
+
     const changeComplexity = (e) => {
         dispatch(getCards(+e.target.value))
 
@@ -111,7 +114,6 @@ const Main = () => {
         dispatch(shuffleCards(cards))
     }
 
-
     const startStopGameHandler = () => {
         if(gameStatus) {
             dispatch(cardReset())
@@ -120,6 +122,8 @@ const Main = () => {
         } else {
             dispatch(gameStart())
             shuffleHandle(cardList)
+            setTimeout(setOpenCards, 0, true)
+            setTimeout(setOpenCards, 3000, false)
         }
     }
 
@@ -128,8 +132,6 @@ const Main = () => {
         dispatch(cardReset())
         dispatch(resetScore())
     }
-
-
 
     return (
         <>  
@@ -144,8 +146,8 @@ const Main = () => {
             </Wrapper>
             
             <MainContainer isVisible={cardMatched == cardList.length}>
-                {cardList.map(item => (
-                    <Card item={item} key={item.id}/>
+                {cardList.map((item) => (
+                    <Card item={item} key={item.id} openCards={openCards}/>
                 ))}
             </MainContainer>
 
