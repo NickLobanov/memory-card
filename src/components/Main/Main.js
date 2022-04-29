@@ -2,9 +2,8 @@ import React, {useEffect, useState} from "react";
 import Card from "../Card/Card";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { shuffleCards, cardReset, getCards, openCards } from "../../actions";
+import { shuffleCards, cardReset, getCards } from "../../actions";
 import { gameStart, gameStop, updateLeaderboard, resetScore } from "../../actions/gameState";
-import { motion } from "framer-motion";
 
 const MainContainer = styled.div`
     display: ${props => props.isVisible ? 'none' : 'grid'};
@@ -84,7 +83,15 @@ const Main = () => {
     }
 
     const sortByField = (field) => {
-        return (a, b) => b[field] > a[field] ? 1 : -1
+        return (a, b) => {
+            if(b == null) {
+                return -1
+            }
+            if(a == null) {
+                return 1
+            }
+            return b[field] > a[field] ? 1 : -1
+        }
     }
 
     useEffect(() => {
@@ -131,6 +138,8 @@ const Main = () => {
         shuffleHandle(cardList)
         dispatch(cardReset())
         dispatch(resetScore())
+        setTimeout(setOpenCards, 0, true)
+        setTimeout(setOpenCards, 3000, false)
     }
 
     return (

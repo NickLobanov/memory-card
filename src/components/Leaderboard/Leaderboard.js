@@ -30,7 +30,7 @@ const BoardTitle = styled.h2`
 
 const Leaderboard = () => {
 
-    let leaderBoardArr = JSON.parse(localStorage.getItem('leaderBoard'))     
+    let leaderBoardArr = JSON.parse(localStorage.getItem('leaderBoard'))
 
     return (
         <LeaderContainer>

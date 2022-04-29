@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom'
 import Header from '../Header/Header';
 import Auth from '../Auth/Auth';
@@ -9,6 +9,7 @@ import { getCards, getBgImages } from '../../actions';
 import {useDispatch} from 'react-redux'
 import PrivatePath from '../../hoc/PrivatePath';
 import { createUser } from '../../actions/user';
+import {updateLeaderboard} from "../../actions/gameState";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
       dispatch(createUser(localStorage.getItem('userName')))
     }
     dispatch(getBgImages())
+    dispatch(updateLeaderboard(JSON.parse(localStorage.getItem('leaderBoard'))))
   }, [])
 
   return (
