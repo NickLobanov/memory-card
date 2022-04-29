@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-todo/static/css/main.d02022e3.css",
-    "main.js": "/react-todo/static/js/main.f9851009.js",
-    "index.html": "/react-todo/index.html",
-    "main.d02022e3.css.map": "/react-todo/static/css/main.d02022e3.css.map",
-    "main.f9851009.js.map": "/react-todo/static/js/main.f9851009.js.map"
+    "main.css": "/memory-card/static/css/main.d02022e3.css",
+    "main.js": "/memory-card/static/js/main.d4683f23.js",
+    "index.html": "/memory-card/index.html",
+    "main.d02022e3.css.map": "/memory-card/static/css/main.d02022e3.css.map",
+    "main.d4683f23.js.map": "/memory-card/static/js/main.d4683f23.js.map"
   },
   "entrypoints": [
     "static/css/main.d02022e3.css",
-    "static/js/main.f9851009.js"
+    "static/js/main.d4683f23.js"
   ]
 }
