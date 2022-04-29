@@ -1,3 +1,5 @@
+import BgOne from '../images/background-one.jpg'
+
 import { 
     GET_CARDS, 
     SELECT_CARD,  
@@ -12,7 +14,7 @@ import {
 
 const initialState = {
     cardList: [],
-    cardTheme: '/images/background-one.jpg',
+    cardTheme: BgOne,
     selectedCard: null,
     bgImages: [],
     cardMatched: 0

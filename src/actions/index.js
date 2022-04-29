@@ -1,4 +1,14 @@
-import axios from "axios"
+import firstImage from '../images/one.jpg'
+import secondImage from '../images/two.jpg'
+import thirdImage from '../images/three.jpg'
+import fourthImage from '../images/four.jpg'
+import fifthImage from '../images/five.jpg'
+import sixthImage from '../images/six.jpg'
+import seventhImage from '../images/seven.jpg'
+import eighthImage from '../images/eight.jpg'
+import BgOne from '../images/background-one.jpg'
+import BgTwo from '../images/background-two.jpg'
+import BgThree from '../images/background-three.jpg'
 
 export const GET_CARDS = 'GET_CARDS'
 export const GET_BG_IMAGES = 'GET_BG_IMAGES'
@@ -11,28 +21,155 @@ export const SHUFFLE_CARDS = 'SHUFFLE_CARDS'
 export const CARD_RESET = 'CARD_RESET'
 export const PATCH_CARD_THEME = 'PATCH_CARD_THEME'
 
+const images = [
+    {
+        "id": "1",
+        "name": "first-image",
+        "src": firstImage,
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "9",
+        "name": "first-image",
+        "src": firstImage,
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "2",
+        "name": "second-image",
+        "src": secondImage,
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "10",
+        "name": "second-image",
+        "src": secondImage,
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "3",
+        "name": "third-image",
+        "src": thirdImage,
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "11",
+        "name": "third-image",
+        "src": thirdImage,
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "4",
+        "name": "fourth-image",
+        "src": fourthImage,
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "12",
+        "name": "fourth-image",
+        "src": fourthImage,
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "5",
+        "name": "fifth-image",
+        "src": fifthImage,
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "13",
+        "name": "fifth-image",
+        "src": fifthImage,
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "6",
+        "name": "sixth-image",
+        "src": sixthImage,
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "14",
+        "name": "sixth-image",
+        "src": sixthImage,
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "7",
+        "name": "seventh-image",
+        "src": seventhImage,
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "15",
+        "name": "seventh-image",
+        "src": seventhImage,
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "8",
+        "name": "eighth-image",
+        "src": eighthImage,
+        "selected": false,
+        "isMatched": false
+    },
+    {
+        "id": "16",
+        "name": "eighth-image",
+        "src": eighthImage,
+        "selected": false,
+        "isMatched": false
+    }
+]
+
+const bgImages = [
+    {
+        "name": "background-one",
+        "url": BgOne
+    },
+    {
+        "name": "background-two",
+        "url": BgTwo
+    },
+    {
+        "name": "background-three",
+        "url": BgThree
+    }
+]
 
 export function getCards(cardLength) {
     return function(dispatch) {
-        axios.get('../image.json')
-            .then(res => {
-                res.data.length = cardLength
-                dispatch({
-                    type: GET_CARDS,
-                    cards: res.data
-                })
-            })
+        
+        images.length = cardLength
+        dispatch({
+            type: GET_CARDS,
+            cards: images
+        })
+           
     }
 }
 export function getBgImages() {
     return function(dispatch) {
-        axios.get('../bgImage.json')
-            .then(res => {
-                dispatch({
-                    type: GET_BG_IMAGES,
-                    bgImages: res.data
-                })
-            })
+        
+        dispatch({
+            type: GET_BG_IMAGES,
+            bgImages: bgImages
+        })
+            
     }
 }
 
