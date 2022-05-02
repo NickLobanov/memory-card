@@ -154,10 +154,11 @@ const bgImages = [
 export function getCards(cardLength) {
     return function(dispatch) {
         
-        images.length = cardLength
+        let getImages = images.slice()
+        getImages.length = cardLength
         dispatch({
             type: GET_CARDS,
-            cards: images
+            cards: getImages
         })
            
     }
