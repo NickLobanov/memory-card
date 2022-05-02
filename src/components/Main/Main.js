@@ -120,16 +120,21 @@ const Main = () => {
         dispatch(shuffleCards(cards))
     }
 
+    const closeCardHandle = () => {
+        dispatch(gameStart())
+        setOpenCards(false)
+    }
+
     const startStopGameHandler = () => {
         if(gameStatus) {
             dispatch(cardReset())
             dispatch(gameStop())
             dispatch(resetScore())
         } else {
-            dispatch(gameStart())
+            
             shuffleHandle(cardList)
             setTimeout(setOpenCards, 0, true)
-            setTimeout(setOpenCards, 3000, false)
+            setTimeout(closeCardHandle, 3000)
         }
     }
 
