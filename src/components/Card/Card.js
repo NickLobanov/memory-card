@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCard, cardMatch, cardClose, addToSelectList, clearSelectedList } from "../../actions";
+import { selectCard, cardMatch, cardClose, addToSelectList, clearSelectedList, stopClickCard } from "../../actions";
 import { increaseScore, decreaseScore } from "../../actions/gameState";
 
 
@@ -33,10 +33,11 @@ const CardBack = styled(CardGeneral)`
 const Card = ({item, openCards}) => {
 
     const dispatch = useDispatch()
-    const {selectedCard, gameStatus, cardTheme} = useSelector(state => ({
+    const {selectedCard, gameStatus, cardTheme, stopCardClick} = useSelector(state => ({
         selectedCard: state.cardReducer.selectedCard,
         gameStatus: state.gameStateReducer.gameStatus,
-        cardTheme: state.cardReducer.cardTheme
+        cardTheme: state.cardReducer.cardTheme,
+        stopCardClick: state.cardReducer.stopCardClick
     }))
 
     const checkCardIsEqual = (card) => {
@@ -46,21 +47,21 @@ const Card = ({item, openCards}) => {
         } else {
             dispatch(decreaseScore())
         }
-        
+        dispatch(stopClickCard())
         dispatch(cardClose())
         dispatch(clearSelectedList())
     }
 
     const cardClickHandle = () => {
-        if (gameStatus) {
+        if (gameStatus && !stopCardClick) {
             dispatch(selectCard(item))
             if(selectedCard == null) {
                 dispatch(addToSelectList(item))
             } else {
+                dispatch(stopClickCard())
                 setTimeout(checkCardIsEqual, 1300, item)
             }
         }
-        
     }
     
     return (

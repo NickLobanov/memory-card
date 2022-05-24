@@ -20,6 +20,7 @@ export const CARD_CLOSE = 'CARD_CLOSE'
 export const SHUFFLE_CARDS = 'SHUFFLE_CARDS'
 export const CARD_RESET = 'CARD_RESET'
 export const PATCH_CARD_THEME = 'PATCH_CARD_THEME'
+export const STOP_CARD_CLICK = 'STOP_CARD_CLICK'
 
 const images = [
     {
@@ -220,5 +221,10 @@ export function patchCardTheme(newTheme) {
     return {
         type: PATCH_CARD_THEME,
         newTheme
+    }
+}
+export function stopClickCard() {
+    return {
+        type: STOP_CARD_CLICK
     }
 }

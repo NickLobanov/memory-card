@@ -66,10 +66,9 @@ const Settings = () => {
 
     const updateLeaderboardName = (newName) => {
         const prevName = localStorage.getItem('userName')
-        console.log(prevName)
-        console.log(newName)
+        
         const leaderlist = JSON.parse(localStorage.getItem('leaderBoard'))
-        console.log(leaderlist)
+        
         const updatedList = leaderlist.map(item => {
             if(item != null && item.name == prevName) {
                 return {...item, name: newName}
@@ -77,7 +76,7 @@ const Settings = () => {
                 return item
             }
         })
-        console.log(updatedList)
+        
         localStorage.setItem('leaderBoard', JSON.stringify(updatedList))
     }
 

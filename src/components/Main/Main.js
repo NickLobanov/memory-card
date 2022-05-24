@@ -82,6 +82,7 @@ const Main = () => {
 
     }
 
+    //Функция сортировки для Leaderboard
     const sortByField = (field) => {
         return (a, b) => {
             if(b == null) {
@@ -95,6 +96,7 @@ const Main = () => {
     }
 
     useEffect(() => {
+        //Обновление Leaderboard по завершению карточек
         if(cardMatched == cardList.length) {
             let newLeaderboard = Object.assign([], leaderBoard)
             newLeaderboard.push({
@@ -108,6 +110,7 @@ const Main = () => {
         }
     }, [cardMatched])
 
+    //Функция перемешивания карточек
     const shuffleHandle = (arr) => {
         let cards = Object.assign([], arr)
         let j, temp
@@ -120,30 +123,33 @@ const Main = () => {
         dispatch(shuffleCards(cards))
     }
 
-    const closeCardHandle = () => {
-        dispatch(gameStart())
-        setOpenCards(false)
+    //Сброс значений карочек и сброс счета
+    const resetHandler = () => {
+        dispatch(cardReset())
+        dispatch(resetScore())
+    }
+
+    //Функция для повората карточек в начале игры
+    const showCardStart = () => {
+        setTimeout(setOpenCards, 0, true)
+        setTimeout(setOpenCards, 3000, false)
     }
 
     const startStopGameHandler = () => {
         if(gameStatus) {
-            dispatch(cardReset())
             dispatch(gameStop())
-            dispatch(resetScore())
+            resetHandler()
         } else {
-            
+            dispatch(gameStart())
             shuffleHandle(cardList)
-            setTimeout(setOpenCards, 0, true)
-            setTimeout(closeCardHandle, 3000)
+            showCardStart()
         }
     }
 
     const resetGameHandler = () => {
         shuffleHandle(cardList)
-        dispatch(cardReset())
-        dispatch(resetScore())
-        setTimeout(setOpenCards, 0, true)
-        setTimeout(setOpenCards, 3000, false)
+        resetHandler()
+        showCardStart()
     }
 
     return (

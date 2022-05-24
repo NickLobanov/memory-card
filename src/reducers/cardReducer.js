@@ -10,14 +10,16 @@ import {
     CLEAR_SELECTED_LIST,
     CARD_RESET,
     GET_BG_IMAGES,
-    PATCH_CARD_THEME } from "../actions"
+    PATCH_CARD_THEME,
+    STOP_CARD_CLICK } from "../actions"
 
 const initialState = {
     cardList: [],
     cardTheme: BgOne,
     selectedCard: null,
     bgImages: [],
-    cardMatched: 0
+    cardMatched: 0,
+    stopCardClick: false,
 }
 
 export const cardReducer = (state = initialState, action) => {
@@ -67,6 +69,9 @@ export const cardReducer = (state = initialState, action) => {
         }
         case PATCH_CARD_THEME: {
             return {...state, cardTheme: action.newTheme}
+        }
+        case STOP_CARD_CLICK: {
+            return {...state, stopCardClick: !state.stopCardClick}
         }
         default: {
             return state
